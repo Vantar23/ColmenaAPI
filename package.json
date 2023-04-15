@@ -9,8 +9,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-<<<<<<< HEAD
-=======
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -18,19 +16,11 @@
     "morgan": "^1.10.0",
     "mssql": "^9.1.1"
   },
->>>>>>> bfb5b5c734cc510d2af2ba6edb0f1f9aca91add2
   "devDependencies": {
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.4",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.21.4",
     "nodemon": "^2.0.22"
-<<<<<<< HEAD
-  },
-  "dependencies": {
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2"
-=======
->>>>>>> bfb5b5c734cc510d2af2ba6edb0f1f9aca91add2
   }
 }
