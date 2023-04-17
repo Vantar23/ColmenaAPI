@@ -1,8 +1,8 @@
-import { config } from "dotenv"
-config()
+    import { config } from "dotenv"
+    config()
 
-console.log(process.env.NICKNAME)
+    console.log(process.env.PORT)
 
-export default {
-    port: 3000
-}
+    export default {
+        port: 3000
+    }
