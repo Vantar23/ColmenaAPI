@@ -1,8 +1,8 @@
-import { getConnection, sql } from "../database/connection"
+import { getConnection, sql, queries } from "../database"
 
 export const getResidents = async (req, res) => {
    const pool = await getConnection()
-   const result = await pool.request().query('SELECT * FROM Residentes')
+   const result = await pool.request().query(queries.getAllResidents)
    res.json(result.recordset)
 }
 export const createNewResident = async (req,res) => {
@@ -14,13 +14,27 @@ export const createNewResident = async (req,res) => {
     }
     if (BLOQUEADO == null) BLOQUEADO = 0;
 
-    const pool = await getConnection()
-    await pool.request()
-    .input("NOMBRE", sql.VarChar, NOMBRE)
-    .input("NO_CASA", sql.Int, NO_CASA)
-    .input("TELEFONO", sql.VarChar, TELEFONO)
-    .input("BLOQUEADO", sql.Bit, BLOQUEADO)
-    .query('INSERT INTO Residentes (NOMBRE, NO_CASA, TELEFONO, BLOQUEADO)VALUES (@NOMBRE, @NO_CASA, @TELEFONO, @BLOQUEADO)')
+    try {
+        const pool = await getConnection()
+        await pool.request()
+        .input("NOMBRE", sql.VarChar, NOMBRE)
+        .input("NO_CASA", sql.Int, NO_CASA)
+        .input("TELEFONO", sql.VarChar, TELEFONO)
+        .input("BLOQUEADO", sql.Bit, BLOQUEADO)
+        .query(queries.createNewResident)
+    
+        res.json('new Product')
+    } catch (error) {
+        res.json(error)
+    }
 
-    res.json('new Product')
-}   
+}
+
+export const getResidentById = async (req,res) => {
+    const pool = await getConnection()
+    const result = await pool.request()
+    .input('ID', id)
+    .query(getResidentById)
+
+    console.log(result)
+}
