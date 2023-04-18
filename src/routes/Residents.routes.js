@@ -1,12 +1,31 @@
 import { Express, Router } from "express";
-import { getResidents, createNewResident, editResident, getResidentById } from "../controllers/Residents.controller";
+import {
+  getResidents,
+  createNewResident,
+  getResidentById,
+  deleteResidentById,
+  getTotalResidents,
+  editResidentById,
+  getBlocked,
+  editBlocked,
+} from "../controllers/Residents.controller";
 
-const router = Router()
+const router = Router();
 
-router.get('/residents', getResidents) 
+router.get("/residents", getResidents);
 
-router.post('/residents', createNewResident)
+router.post("/residents", createNewResident);
 
-router.get('/residents/:id', getResidentById)
+router.get("/residents/count", getTotalResidents);
 
-export default router
+router.get("/residents/:id", getResidentById);
+
+router.delete("/residents/:id", deleteResidentById);
+
+router.put("/residents/:id", editResidentById);
+
+router.get("/blocked", getBlocked);
+
+router.put("/blocked/:no_casa", editBlocked);
+
+export default router;
